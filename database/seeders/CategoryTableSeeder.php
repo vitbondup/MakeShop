@@ -13,6 +13,6 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\Category::factory(3)->create();
     }
 }
