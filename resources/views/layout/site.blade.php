@@ -36,7 +36,7 @@
             <!-- Цей блок розташований справа -->
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search"
-                       placeholder="Пошук по каталогу" aria-label="Search">
+                       placeholder="Пошук по категоріям" aria-label="Search">
                 <button class="btn btn-outline-info my-2 my-sm-0"
                         type="submit">Шукати</button>
             </form>
