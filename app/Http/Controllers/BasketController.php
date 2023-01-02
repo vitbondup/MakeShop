@@ -33,8 +33,14 @@ class BasketController extends Controller {
         return back()->withCookie(cookie('basket_id', $basket_id, 525600));
     }
 
-    public function index() {
-        return view('basket.index');
+    public function index(Request $request) {
+        $basket_id = $request->cookie('basket_id');
+        if (!empty($basket_id)) {
+            $products = Basket::findOrFail($basket_id)->products;
+            return view('basket.index', compact('products'));
+        } else {
+            abort(404);
+        }
     }
 
     public function checkout() {
