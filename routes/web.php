@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('/basket/add/{id}', 'App\Http\Controllers\BasketController@add')
+    ->where('id', '[0-9]+')
+    ->name('basket.add');
 Route::get('/basket/index', 'App\Http\Controllers\BasketController@index')->name('basket.index');
 Route::get('/basket/checkout', 'App\Http\Controllers\BasketController@checkout')->name('basket.checkout');
 Route::get('/', 'App\Http\Controllers\IndexController')->name('index');

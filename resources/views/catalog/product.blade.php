@@ -15,6 +15,15 @@
                         </div>
                         <div class="col-md-6">
                             <p>Ціна: {{ number_format($product->price, 2, '.', '') }}</p>
+                            <!-- Форма додавання товару у кошик -->
+                            <form action="{{ route('basket.add', ['id' => $product->id]) }}"
+                                  method="post" class="form-inline">
+                                @csrf
+                                <label for="input-quantity">Кількість</label>
+                                <input type="text" name="quantity" id="input-quantity" value="1"
+                                       class="form-control mx-2 w-25">
+                                <button type="submit" class="btn btn-success">Додати у кошик</button>
+                            </form>
                         </div>
                     </div>
                     <div class="row">
