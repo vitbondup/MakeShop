@@ -12,6 +12,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('/basket/remove/{id}', 'App\Http\Controllers\BasketController@remove')
+    ->where('id', '[0-9]+')
+    ->name('basket.remove');
+Route::post('/basket/clear', 'App\Http\Controllers\BasketController@clear')->name('basket.clear');
+Route::post('/basket/plus/{id}', 'App\Http\Controllers\BasketController@plus')
+    ->where('id', '[0-9]+')
+    ->name('basket.plus');
+Route::post('/basket/minus/{id}', 'App\Http\Controllers\BasketController@minus')
+    ->where('id', '[0-9]+')
+    ->name('basket.minus');
 Route::post('/basket/add/{id}', 'App\Http\Controllers\BasketController@add')
     ->where('id', '[0-9]+')
     ->name('basket.add');
