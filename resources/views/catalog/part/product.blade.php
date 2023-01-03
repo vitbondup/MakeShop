@@ -7,6 +7,12 @@
             <img src="https://via.placeholder.com/400x120" alt="" class="img-fluid">
         </div>
         <div class="card-footer">
+            <!-- Форма додавання товару у кошик -->
+            <form action="{{ route('basket.add', ['id' => $product->id]) }}"
+                  method="post" class="d-inline">
+                @csrf
+                <button type="submit" class="btn btn-success">Додати у кошик</button>
+            </form>
             <a href="{{ route('catalog.product', ['slug' => $product->slug]) }}"
                class="btn btn-dark">Перейти до товару</a>
         </div>

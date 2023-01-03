@@ -41,6 +41,11 @@
                 <button class="btn btn-outline-info my-2 my-sm-0"
                         type="submit">Шукати</button>
             </form>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('basket.index') }}">Кошик</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
