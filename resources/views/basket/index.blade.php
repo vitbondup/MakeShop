@@ -13,6 +13,7 @@
                 <th>Ціна</th>
                 <th>Кількість</th>
                 <th>Вартість</th>
+                <th></th>
             </tr>
             @foreach($products as $product)
                 @php
@@ -32,8 +33,7 @@
                               method="post" class="d-inline">
                             @csrf
                             <button type="submit" class="m-0 p-0 border-0 bg-transparent">
-                                <i class="fas fa-minus-square"></i>
-                                <i class="fa fa-beer"></i>
+                                <i class="bi bi-dash-square"></i>
                             </button>
                         </form>
                         <span class="mx-1">{{ $itemQuantity }}</span>
@@ -41,12 +41,20 @@
                               method="post" class="d-inline">
                             @csrf
                             <button type="submit" class="m-0 p-0 border-0 bg-transparent">
-                                <i class="fas fa-plus-square"></i>
-                                <i class="fa-solid fa-plus"></i>
+                                <i class="bi bi-plus-square"></i>
                             </button>
                         </form>
                     </td>
                     <td>{{ number_format($itemCost, 2, '.', '') }}</td>
+                    <td>
+                        <form action="{{ route('basket.remove', ['id' => $product->id]) }}"
+                              method="post">
+                            @csrf
+                            <button type="submit" class="m-0 p-0 border-0 bg-transparent">
+                                <i class="bi bi-trash3"></i>
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
             <tr>
