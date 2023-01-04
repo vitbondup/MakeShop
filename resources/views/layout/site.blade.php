@@ -51,10 +51,8 @@
 
     <div class="row">
         <div class="col-md-3">
-            <h4>Розділи каталога</h4>
-            <p>Тут будуть корневі разділи</p>
-            <h4>Популярні бренди</h4>
-            <p>Тут будуть популярні бренди</p>
+            @include('layout.part.roots')
+            @include('layout.part.brands')
         </div>
         <div class="col-md-9">
             @yield('content')
