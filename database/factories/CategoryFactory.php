@@ -16,6 +16,7 @@ class CategoryFactory extends Factory
     {
         $name=$this->faker->realText(rand(30, 40));
         return [
+            'parent_id' => rand(1, 9),
             'name' => $name,
             'content' => $this->faker->realText(rand(150, 200)),
             'slug' => Str::slug($name),

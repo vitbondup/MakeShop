@@ -16,4 +16,8 @@ class Category extends Model
     public static function roots() {
         return self::where('parent_id', 0)->get();
     }
+
+    public function children() {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
 }
