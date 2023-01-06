@@ -34,8 +34,6 @@ Route::get('/catalog/category/{slug}', 'App\Http\Controllers\CatalogController@c
 Route::get('/catalog/brand/{slug}', 'App\Http\Controllers\CatalogController@brand')->name('catalog.brand');
 Route::get('/catalog/product/{slug}', 'App\Http\Controllers\CatalogController@product')->name('catalog.product');
 
-Route::name('user.')->prefix('user')->group(function () {
-    Auth::routes();
-});
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
