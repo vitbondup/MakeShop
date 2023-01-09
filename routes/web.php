@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
+    ->middleware('auth', 'admin')->group(function () {
+    Route::get('index', 'IndexController')->name('index');
+});
 Route::post('/basket/remove/{id}', 'App\Http\Controllers\BasketController@remove')
     ->where('id', '[0-9]+')
     ->name('basket.remove');
