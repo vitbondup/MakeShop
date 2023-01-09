@@ -44,7 +44,10 @@
 
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('basket.index') }}">Кошик</a>
+                    <a class="nav-link @if ($positions) text-success @endif" href="{{ route('basket.index') }}">
+                        Кошик
+                        @if ($positions) ({{ $positions }}) @endif
+                    </a>
                 </li>
                 <!-- Authentication Links -->
                 @guest

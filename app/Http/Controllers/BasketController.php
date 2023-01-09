@@ -12,7 +12,7 @@ class BasketController extends Controller {
     private $basket;
 
     public function __construct() {
-        $this->getBasket();
+        $this->basket = Basket::getBasket();
     }
 
     public function index() {
@@ -38,20 +38,6 @@ class BasketController extends Controller {
     public function minus($id) {
         $this->basket->decrease($id);
         return redirect()->route('basket.index');
-    }
-
-    private function getBasket() {
-        $basket_id = request()->cookie('basket_id');
-        if (!empty($basket_id)) {
-            try {
-                $this->basket = Basket::findOrFail($basket_id);
-            } catch (ModelNotFoundException $e) {
-                $this->basket = Basket::create();
-            }
-        } else {
-            $this->basket = Basket::create();
-        }
-        Cookie::queue('basket_id', $this->basket->id, 525600);
     }
 
     public function remove($id) {
