@@ -78,8 +78,19 @@ class CategoryController extends Controller
      * @param  \App\Models\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
-    {
-        //
+    public function destroy(Category $category) {
+        if ($category->children->count()) {
+            $errors[] = 'Неможна видалити категорію, яка має дочірні категорії';
+        }
+        if ($category->products->count()) {
+            $errors[] = 'Не можна видалити категорію, яка містить товари';
+        }
+        if (!empty($errors)) {
+            return back()->withErrors($errors);
+        }
+        $category->delete();
+        return redirect()
+            ->route('admin.category.index')
+            ->with('success', 'Категорія каталога була успішно видалена');
     }
 }
