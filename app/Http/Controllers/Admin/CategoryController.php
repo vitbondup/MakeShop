@@ -45,9 +45,8 @@ class CategoryController extends Controller
      * @param  \App\Models\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
-    {
-        //
+    public function show(Category $category) {
+        return view('admin.category.show', compact('category'));
     }
 
     /**
