@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/basket/success', 'App\Http\Controllers\BasketController@success')
+    ->name('basket.success');
+Route::post('/basket/saveorder', 'App\Http\Controllers\BasketController@saveOrder')->name('basket.saveorder');
 Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
     ->middleware('auth', 'admin')->group(function () {
     Route::get('index', 'IndexController')->name('index');
