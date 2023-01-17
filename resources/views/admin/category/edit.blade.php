@@ -11,7 +11,7 @@
                    required maxlength="100" value="{{ old('name') ?? $category->name }}">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="title" placeholder="ЛЗУ (на англ.)"
+            <input type="text" class="form-control" name="slug" placeholder="ЛЗУ (на англ.)"
                    required maxlength="100" value="{{ old('slug') ?? $category->slug }}">
         </div>
         <div class="form-group">

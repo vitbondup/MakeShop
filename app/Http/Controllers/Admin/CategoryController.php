@@ -34,9 +34,17 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $this->validate($request, [
+            'parent_id' => 'integer',
+            'name' => 'required|max:100',
+            'slug' => 'required|max:100|unique:categories,slug|alpha_dash',
+            'image' => 'mimes:jpeg,jpg,png|max:5000'
+        ]);
+        $category = Category::create($request->all());
+        return redirect()
+            ->route('admin.category.show', ['category' => $category->id])
+            ->with('success', 'Нова категорія успішно створена');
     }
 
     /**
@@ -67,9 +75,18 @@ class CategoryController extends Controller
      * @param  \App\Models\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
-    {
-        //
+    public function update(Request $request, Category $category) {
+        $id = $category->id;
+        $this->validate($request, [
+            'parent_id' => 'integer',
+            'name' => 'required|max:100',
+            'slug' => 'required|max:100|unique:categories,slug,'.$id.',id|alpha_dash',
+            'image' => 'mimes:jpeg,jpg,png|max:5000'
+        ]);
+        $category->update($request->all());
+        return redirect()
+            ->route('admin.category.show', ['category' => $category->id])
+            ->with('success', 'Категорія була успішно виправлена');
     }
 
     /**
