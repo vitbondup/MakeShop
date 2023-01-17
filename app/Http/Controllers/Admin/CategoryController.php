@@ -23,9 +23,9 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
+        $parents = Category::roots();
+        return view('admin.category.create', compact('parents'));
     }
 
     /**
@@ -55,9 +55,9 @@ class CategoryController extends Controller
      * @param  \App\Models\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
-    {
-        //
+    public function edit(Category $category) {
+        $parents = Category::roots();
+        return view('admin.category.edit', compact('category', 'parents'));
     }
 
     /**
